@@ -6,6 +6,9 @@ import './assets/css/reset.css'
 import './assets/css/font.css'
 import animated from 'animate.css'
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
 import loading from './utils/loading' //全局loading组件
 // swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -14,6 +17,7 @@ import '../node_modules/vue-awesome-swiper/node_modules/swiper/dist/css/swiper.c
 Vue.use(loading)
 Vue.use(VueAwesomeSwiper)
 Vue.use(animated)
+Vue.use(MintUI)
 
 Vue.config.productionTip = false
 

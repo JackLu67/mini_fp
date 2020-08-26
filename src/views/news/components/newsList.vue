@@ -1,18 +1,20 @@
 <template>
   <div class="wrapper">
     <div class="pro-box">
-      <div class="item" v-for="i in 10" :key="i" @click="handleItme">
-        <div class="left">
-          <p class="title">财政部促地方支出加快，谋稳税源房产税渐行渐近</p>
-          <p class="sub-title">
-            <span>财经新闻</span>
-            <span>浏览12</span>
-          </p>
+      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+        <div class="item" v-for="i in 10" :key="i" @click="handleItme">
+          <div class="left">
+            <p class="title">财政部促地方支出加快，谋稳税源房产税渐行渐近</p>
+            <p class="sub-title">
+              <span>财经新闻</span>
+              <span>浏览12</span>
+            </p>
+          </div>
+          <div class="right">
+            <img src="../../../assets/images/bannar@2x.png" alt="">
+          </div>
         </div>
-        <div class="right">
-          <img src="../../../assets/images/bannar@2x.png" alt="">
-        </div>
-      </div>
+      </mt-loadmore>
     </div>
   </div>
 </template>
@@ -23,7 +25,8 @@ export default {
   },
   data() {
     return {
-      isShow: false
+      isShow: false,
+      allLoaded: false
     }
   },
   mounted() {
@@ -35,6 +38,14 @@ export default {
     },
     handleItme() {
       this.$router.push('/newsDetail')
+    },
+    loadTop() {
+      // 加载更多数据
+      this.$refs.loadmore.onTopLoaded()
+    },
+    loadBottom() {
+      // 加载更多数据
+      this.$refs.loadmore.onBottomLoaded()
     }
   }
 }
@@ -44,6 +55,8 @@ export default {
 .wrapper {
   padding: 0 0.27rem;
 }
+
+
 .pro-box {
   max-height: calc(100vh - 4rem);
   background: #ffffff;
@@ -84,6 +97,19 @@ export default {
         border-radius: 4px;
       }
     }
+  }
+}
+/* ipad竖屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+  .pro-box {
+    max-height: calc(100vh - 4.6rem);
+  }
+}
+
+/* ipad横屏 */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
+.pro-box {
+    max-height: calc(100vh - 5.5rem);
   }
 }
 </style>

@@ -6,10 +6,10 @@
     <div class="recommend-box">
       <public-service></public-service>
       <hot-recommend :hotRecommendList="hotRecommendList"></hot-recommend>
-      <microfinance></microfinance>
+      <microfinance :microfinanceData="microfinance"></microfinance>
       <financial-products></financial-products>
       <cus-img :src="src1"></cus-img>
-      <financial-news></financial-news>
+      <financial-news :news="news"></financial-news>
       <cus-img :src="src2"></cus-img> 
     </div>
   </div>
@@ -47,7 +47,9 @@ export default {
       src1: src1,
       src2: src2,
       isShow: true,
-      hotRecommendList: []
+      hotRecommendList: [],
+      microfinance: [],
+      news: []
     }
   },
   created() {
@@ -66,6 +68,8 @@ export default {
       const data = await getIndexList()
       if(data.code === 200) {
         this.hotRecommendList = data.data.hotRecommend
+        this.microfinance = data.data.microfinance
+        this.news = data.data.news
         this.$loading.hide()
       }
     }

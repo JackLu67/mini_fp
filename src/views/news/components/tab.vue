@@ -41,7 +41,7 @@ export default {
           name: '乡镇动态'
         }
       ],
-      list: [1,2,3]
+      list: [1, 2, 3]
     }
   },
   methods: {

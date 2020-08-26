@@ -13,7 +13,7 @@
     <div class="pro-box">
       <div class="pro-item" v-for="item in hotRecommendList" :key="item.title">
         <div class="top-bgn">
-          <span>{{item.top}}</span>
+          <span>{{item.topText}}</span>
         </div>
         <div class="title">
           <span>{{item.title}}</span>
@@ -21,7 +21,13 @@
         </div>
         <p class="num">{{item.num}}</p>
         <p class="sub-title">贷款费率</p>
-        <p class="tips">{{item.des}}<span class="red"></span>{{item.des1}}<span class="red"></span>{{item.des2}}</p>
+        <p class="tips">
+          {{item.des1}}
+          <span class="red" v-if="item.des2"></span>
+          {{item.des2}}
+          <span class="red" v-if="item.des3"></span>
+          {{item.des3}}
+        </p>
         <button class="btn">立即申请</button>
       </div>
       

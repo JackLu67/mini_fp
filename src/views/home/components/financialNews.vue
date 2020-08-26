@@ -11,40 +11,16 @@
       </div>
     </div>
     <div class="pro-box">
-      <div class="item">
+      <div class="item" v-for="(item, index) in news" :key="index">
         <div class="left">
-          <p class="title">财政部促地方支出加快，谋稳税源房产税渐行渐近</p>
+          <p class="title">{{item.title}}</p>
           <p class="sub-title">
-            <span>财经新闻</span>
-            <span>浏览12</span>
+            <span>{{item.source}}</span>
+            <span>{{item.views}}</span>
           </p>
         </div>
         <div class="right">
-          <img src="../../../assets/images/bannar@2x.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="left">
-          <p class="title">财政部促地方支出加快，谋稳税源房产税渐行渐近</p>
-          <p class="sub-title">
-            <span>财经新闻</span>
-            <span>浏览12</span>
-          </p>
-        </div>
-        <div class="right">
-          <img src="../../../assets/images/bannar@2x.png" alt="">
-        </div>
-      </div>
-      <div class="item">
-        <div class="left">
-          <p class="title">财政部促地方支出加快，谋稳税源房产税渐行渐近</p>
-          <p class="sub-title">
-            <span>财经新闻</span>
-            <span>浏览12</span>
-          </p>
-        </div>
-        <div class="right">
-          <img src="../../../assets/images/bannar@2x.png" alt="">
+          <img :src="item.img" alt="">
         </div>
       </div>
     </div>
@@ -52,6 +28,9 @@
 </template>
 <script>
 export default {
+  props: {
+    news: Array
+  },
   data() {
     return {
       isShow: true

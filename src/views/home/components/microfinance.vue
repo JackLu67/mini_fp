@@ -11,42 +11,40 @@
     </div>
   </div>
   <div class="pro-box">
-    <div class="item-box">
+    <div class="item-box" v-for="(item ,index) in microfinanceData" :key="index">
       <div class="left-box">
         <div>
-          <span class="num">4.2%</span>
-          <span class="title">约定利率</span>
+          <span class="num">{{item.rate}}</span>
+          <span class="title">{{item.rateTetx}}</span>
         </div>
         <div class="text-box">
-          <span class="text">利率低</span>
-          <span class="text">放款快</span>
-          <span class="text">延期优惠大</span>
+          <span class="text" v-for="(gro, index) in item.des" :key="index">{{gro.des}}</span>
         </div>
       </div>
       <div class="right-box">
-        <div class="title">福祥·青创贷</div>
-        <div class="sub-title">您的梦想有我守护</div>
-      </div>
-    </div>
-    <div class="item-box">
-      <div class="left-box">
-        <div>
-          <span class="num">4.2%</span>
-          <span class="title">约定利率</span>
-        </div>
-        <div class="text-box">
-          <span class="text">利率低</span>
-          <span class="text">周期长</span>
-        </div>
-      </div>
-      <div class="right-box">
-        <div class="title">福祥·助学贷</div>
-        <div class="sub-title">来日方长 未来可期</div>
+        <div class="title">{{item.title}}</div>
+        <div class="sub-title">{{item.subTitle}}</div>
       </div>
     </div>
   </div>
 </div>
 </template>
+
+<script type="text/javascript">
+export default {
+  props: {
+    microfinanceData: Array
+  },
+  data() {
+    return {
+
+    }
+  },
+  components: {
+
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import '../../../assets/css/mixin.scss';
