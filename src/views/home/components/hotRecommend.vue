@@ -11,35 +11,35 @@
       </div>
     </div>
     <div class="pro-box">
-      <div class="pro-item">
+      <div class="pro-item" v-for="item in hotRecommendList" :key="item.title">
         <div class="top-bgn">
-          <span>装修无忧</span>
+          <span>{{item.top}}</span>
         </div>
         <div class="title">
-          <span>福祥·装修贷</span>
+          <span>{{item.title}}</span>
           <i></i>
         </div>
-        <p class="num">3%</p>
+        <p class="num">{{item.num}}</p>
         <p class="sub-title">贷款费率</p>
-        <p class="tips">利率低<span class="red"></span>放款快<span class="red"></span>分期还款</p>
+        <p class="tips">{{item.des}}<span class="red"></span>{{item.des1}}<span class="red"></span>{{item.des2}}</p>
         <button class="btn">立即申请</button>
       </div>
-      <div class="pro-item">
-        <div class="top-bgn">
-          <span>存教产品</span>
-        </div>
-        <div class="title">
-          <span>爱心存单</span>
-          <i></i>
-        </div>
-        <p class="num">2.6%-3.5%</p>
-        <p class="sub-title">贷款费率</p>
-        <p class="tips">专享500积分</p>
-        <button class="btn">立即申请</button>
-      </div>
+      
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    hotRecommendList: Array
+  },
+  data() {
+    return {
+
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 @import '../../../assets/css/mixin.scss';
 .title-box {

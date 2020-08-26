@@ -13,7 +13,7 @@ module.exports = {
     devServer: {  // 开发环境跨域情况的代理配置
         proxy: {
             '/api': {
-                target: 'https://inter.taotiangou.net'
+                target: 'https://www.easy-mock.com/mock/5f43ad2137dd743fd5db5ef2'
             }
         }
     },

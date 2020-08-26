@@ -7,6 +7,7 @@
 
 <script type="text/javascript">
 import currentPtImg from '../../../assets/images/currentPt.png'
+import pointLogo from '../../../assets/images/pointLogo.png'
 export default {
   data() {
     return {
@@ -60,7 +61,7 @@ export default {
                   </div>`
       let myLabel = new BMap.Label(str, {
         position: pt, //label 在此处添加点位位置信息
-        offset: new BMap.Size(-75, -70)
+        offset: new BMap.Size(-70, -70)
       })
       myLabel.setStyle({
         border: "0", //边
@@ -69,10 +70,13 @@ export default {
         padding: 0,
         background: 'transparent'
       })
-      this.map.addOverlay(myLabel) //添加点位
-      // let myIcon = new BMap.Icon(currentPtImg, new BMap.Size(50, 50))
-      // let marker = new BMap.Marker(pt, { icon: myIcon, offset: new BMap.Size(0, -10) })  // 创建标注
-      // this.map.addOverlay(marker);
+      this.map.addOverlay(myLabel) //添加label
+
+      // 添加marker
+      let pot = new BMap.Point(111.137064,29.434398)
+      let myIcon = new BMap.Icon(pointLogo, new BMap.Size(32, 35))
+      let marker = new BMap.Marker(pot, { icon: myIcon, offset: new BMap.Size(0, -10) })  // 创建标注
+      this.map.addOverlay(marker);
 
       //let geolocation = new BMap.Geolocation()
       // geolocation.enableSDKLocation() // sdk定位
@@ -84,6 +88,28 @@ export default {
       //     console('failed'+this.getStatus())
 	    //   }
       // })
+      this.routePlan(pt, pot)
+    },
+    routePlan(pt, pot) {
+      let map = this.map
+      let walking = new BMap.WalkingRoute(map, {
+        renderOptions: {
+          map: map, 
+          autoViewport: true
+        },
+        onPolylinesSet(routes) {
+          routes.forEach(Route => {
+            let polyline = Route.getPolyline()
+            polyline.setStrokeColor("#EB2719")
+            polyline.setStrokeWeight(4)
+          })
+        },
+        onMarkersSet(routes) {
+          map.removeOverlay(routes[0].marker) // 删除起点
+          map.removeOverlay(routes[1].marker) // 删除终点
+        }
+      })
+      walking.search(pt, pot);
     }
   }
 }
@@ -91,6 +117,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../assets/css/mixin.scss';
+// /deep/.BMap_Marker img {
+//   display: none !important;
+// }
 .wrapper {
   position: relative;
   .map {

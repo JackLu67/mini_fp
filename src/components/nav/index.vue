@@ -4,7 +4,7 @@
     <div class="nav-box">
       <img src="../../assets/images/left.png" alt="" @click="back">
       <span>{{title}}</span>
-      <img src="../../assets/images/search.png" alt="">
+      <img v-if="searchImgShow" src="../../assets/images/search.png" alt="">
     </div>
   </div>
 </template>
@@ -12,7 +12,8 @@
 <script type="text/javascript">
 export default {
   props: {
-    title: String
+    title: String,
+    searchImgShow: Boolean
   },
   data() {
     return {

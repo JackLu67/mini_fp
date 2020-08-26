@@ -1,14 +1,13 @@
 <template>
-  <div class="wrapper">
-    <cus-nav :title="title"></cus-nav>
-    <cus-map></cus-map>
-    <cus-lately></cus-lately>
-    <cus-list></cus-list>
-    <loading :isShow="isShow"></loading>
-  </div>
+<div class="wrapper">
+  <cus-nav :title="title"></cus-nav>
+  <cus-map></cus-map>
+  <cus-lately></cus-lately>
+  <cus-list></cus-list>
+</div>
 </template>
 
-<script type="text/javascript">
+<script>
 import CusNav from '@/components/nav'
 import cusMap from './components/map'
 import cusLately from './components/lately'
@@ -23,13 +22,15 @@ export default {
   data() {
     return {
       isShow: true,
+      searchImgShow: true,
       title: '网点查询'
     }
   },
   mounted() {
     var that = this
+    that.$loading.show()
     setTimeout(() => {
-      that.isShow = false
+      that.$loading.hide()
     }, 1000)
   }
 }

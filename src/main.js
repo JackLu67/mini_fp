@@ -10,6 +10,7 @@ import loading from './utils/loading' //全局loading组件
 // swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import '../node_modules/vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
+
 Vue.use(loading)
 Vue.use(VueAwesomeSwiper)
 Vue.use(animated)

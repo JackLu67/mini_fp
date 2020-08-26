@@ -1,37 +1,38 @@
 import axios from 'axios'
-import config from '../config/index' // 路径配置
 
-// 创建axios 实例
+// 创建Axios实例
 const service = axios.create({
-    baseURL: config.baseURL, // api的base_url
-    timeout: 10000 // 请求超时时间
+    // headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+    timeout: 5000 // request timeout
 })
 
-// request 拦截器
+// 请求拦截器
 service.interceptors.request.use(
     config => {
-        // 这里可以自定义一些config 配置
-
         return config
     },
     error => {
-        //  这里处理一些请求出错的情况
-
-        Promise.reject(error)
+        return Promise.reject(error)
     }
 )
 
-// response 拦截器
+// response interceptor
 service.interceptors.response.use(
     response => {
         const res = response.data
-        // 这里处理一些response 正常放回时的逻辑
-
-        return res
+        if (res.code !== 200) {
+            if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
+                // to re-login
+                alert(111)
+            }
+            return Promise.reject(new Error(res.message || 'Error'))
+        } else {
+            return res
+        }
     },
     error => {
-        // 这里处理一些response 出错时的逻辑
-
+        console.log(error + '==' + 11111111111) // for debug
         return Promise.reject(error)
     }
 )

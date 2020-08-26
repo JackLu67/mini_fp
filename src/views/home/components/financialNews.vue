@@ -6,7 +6,7 @@
         <span class="sub-title">平台服务 方便快捷</span>
       </div>
       <div>
-        <span class="more">更多</span>
+        <span class="more" @click="moreNews('/news')">更多</span>
         <span>></span>
       </div>
     </div>
@@ -50,6 +50,25 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      isShow: true
+    }
+  },
+  created() {
+    this.$loading.show()
+  },
+  mounted() {
+  },
+  methods: {
+    moreNews(url) {
+      this.$router.push(url)
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 @import '../../../assets/css/mixin.scss';
 .title-box {

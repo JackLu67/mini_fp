@@ -3,28 +3,30 @@
     <div class="latly-box">
       <div class="logo-box">
         <div>
-          <img src="../../../assets/images/bankLogo.png" alt="">
-          <span class="sub-logo">距离最近</span>
+          <span class="sub-logo">推荐网点</span>
         </div>
         <div>
           <span>145m</span>
           <img src="../../../assets/images/daohang.png" alt="">
         </div>
       </div>
-      <div class="title">贵阳银行林城东路支行</div>
-      <div class="sub-title">贵阳市-观山湖区-林城路贵阳国际金融中心MAX-D座</div>
+      <div class="title">
+        <img src="../../../assets/images/logo.png" alt="">
+        <span>湖南农村信用社商贸城支行</span>
+      </div>
+      <div class="sub-title">湖南省-慈利县-林城路贵阳国际金融中心MAX-D座</div>
       <div class="phone">
-        <img src="../../../assets/images/phone.png" alt="">
-        <span>0851-42569888</span>
+        <span>营业厅</span>
+        <span>ATM机</span>
       </div>
       <div class="btn-box">
-        <div class="left">
-          <img src="../../../assets/images/daohangguanli01.png" alt="">
-          <span>导航</span>
-        </div>
         <div class="right">
-          <img src="../../../assets/images/phone.png" alt="">
+          <img src="../../../assets/images/phone.png" alt="" >
           <span>拨号</span>
+        </div>
+        <div class="left">
+          <img src="../../../assets/images/daohang02.png" alt="" width="15px" height="16px">
+          <span>导航</span>
         </div>
       </div>
     </div>
@@ -69,33 +71,49 @@ export default {
         font-family: PingFang_Medium;
         font-size: 12px;
         color: #FFF;
-        margin-left: 0.17rem;
         border-radius: 2px;
       }
       span {
         vertical-align: middle;
         font-size: 12px;
-        color: #777777;
+        color: #000000;
       }
       img {
         vertical-align: middle;
       }
     }
     .title {
-      font-size: 18px;
       font-family: PingFang_Bold;
       margin-top: 0.6rem;
+      img {
+        width: 0.34rem;
+        height: 0.34rem;
+        vertical-align: middle;
+      }
+      span {
+        vertical-align: middle;
+        margin-left: 0.17rem;
+        font-size: 17px;
+      }
     }
     .sub-title {
       font-family: PingFang_Medium;
       font-size: 12px;
       color: #010101;
       margin-top: 0.31rem;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 90%;
     }
     .phone {
-      margin-top: 0.2rem;
-      img {
-        margin-right: 0.07rem;
+      margin-top: 0.41rem;
+      span  {
+        font-size: 11px;
+        color: #326AE8;
+      }
+      span:last-child {
+        margin-left: 0.17rem;
       }
     }
     .btn-box {
@@ -113,7 +131,7 @@ export default {
         }
         img {
           margin-right: 2px;
-          vertical-align: sub;
+          vertical-align: middle;
         }
       }
       .left {
